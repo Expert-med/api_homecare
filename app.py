@@ -4,6 +4,7 @@ import pdfplumber
 import json
 import re
 import io
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -110,4 +111,4 @@ def upload_pdf():
         return jsonify({"error": "Invalid file type"}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8083)))
